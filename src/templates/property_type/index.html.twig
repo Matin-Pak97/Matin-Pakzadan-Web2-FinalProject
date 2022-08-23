@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PropertyType index{% endblock %}
+
+{% block body %}
+    <h1>PropertyType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for property_type in property_types %}
+            <tr>
+                <td>{{ property_type.id }}</td>
+                <td>{{ property_type.type }}</td>
+                <td>{{ property_type.description }}</td>
+                <td>
+                    <a href="{{ path('app_property_type_show', {'id': property_type.id}) }}">show</a>
+                    <a href="{{ path('app_property_type_edit', {'id': property_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_property_type_new') }}">Create new</a>
+{% endblock %}

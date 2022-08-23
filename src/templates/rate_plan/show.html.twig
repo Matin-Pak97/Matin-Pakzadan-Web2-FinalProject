@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RatePlan{% endblock %}
+
+{% block body %}
+    <h1>RatePlan</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rate_plan.id }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ rate_plan.price }}</td>
+            </tr>
+            <tr>
+                <th>IsDefault</th>
+                <td>{{ rate_plan.isDefault ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ExtraGuestPrice</th>
+                <td>{{ rate_plan.extraGuestPrice }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ rate_plan.createdAt ? rate_plan.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ rate_plan.updatedAt ? rate_plan.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rate_plan_index') }}">back to list</a>
+
+    <a href="{{ path('app_rate_plan_edit', {'id': rate_plan.id}) }}">edit</a>
+
+    {{ include('rate_plan/_delete_form.html.twig') }}
+{% endblock %}

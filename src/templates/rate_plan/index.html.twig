@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RatePlan index{% endblock %}
+
+{% block body %}
+    <h1>RatePlan index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Price</th>
+                <th>IsDefault</th>
+                <th>ExtraGuestPrice</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rate_plan in rate_plans %}
+            <tr>
+                <td>{{ rate_plan.id }}</td>
+                <td>{{ rate_plan.price }}</td>
+                <td>{{ rate_plan.isDefault ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_plan.extraGuestPrice }}</td>
+                <td>{{ rate_plan.createdAt ? rate_plan.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rate_plan.updatedAt ? rate_plan.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_rate_plan_show', {'id': rate_plan.id}) }}">show</a>
+                    <a href="{{ path('app_rate_plan_edit', {'id': rate_plan.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rate_plan_new') }}">Create new</a>
+{% endblock %}
