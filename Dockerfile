@@ -14,13 +14,15 @@ RUN apt-get update -y
 RUN apt-get install -y git
 
 # install zip
-RUN apt-get install -y zip
+RUN apt-get install -y zip \
+    curl
 
 # install mysql driver
 RUN docker-php-ext-install pdo_mysql
 
 # install npm
-RUN apt-get -y install nodejs npm
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
+RUN apt-get -y install nodejs
 RUN npm install --global yarn
 
 # install xdebug

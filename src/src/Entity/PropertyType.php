@@ -2,12 +2,19 @@
 
 namespace App\Entity;
 
+use App\Model\TimeLoggerInterface;
+use App\Model\TimeLoggerTrait;
+use App\Model\UserLoggerInterface;
+use App\Model\UserLoggerTrait;
 use App\Repository\PropertyTypeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PropertyTypeRepository::class)]
-class PropertyType
+class PropertyType implements TimeLoggerInterface, UserLoggerInterface
 {
+    use TimeLoggerTrait;
+    use UserLoggerTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -18,6 +25,11 @@ class PropertyType
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
+
+    public function __toString(): string
+    {
+        return $this->type;
+    }
 
     public function getId(): ?int
     {

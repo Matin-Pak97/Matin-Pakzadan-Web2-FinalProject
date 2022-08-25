@@ -18,8 +18,6 @@ class PropertyType extends AbstractType
             ->add('minCapacity')
             ->add('checkinTime')
             ->add('checkoutTime')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('type')
         ;
     }

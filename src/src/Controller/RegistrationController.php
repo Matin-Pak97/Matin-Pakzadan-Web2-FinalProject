@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Contract;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,6 +22,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $role = $form->get('role')->getData();
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -28,12 +30,24 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setRoles([$role]);
 
-            $entityManager->persist($user);
-            $entityManager->flush();
             // do anything else you need here, like send an email
+            if(in_array("ROLE_HOST", $user->getRoles())) {
+                $contract = new Contract();
+                $contract->setOwneredBy($user);
+                $contract->setNumberOfPropery(10);
 
-            return $this->redirectToRoute('_preview_error');
+                $entityManager->persist($contract);
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_property_index');
+            } else {
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_property_index');
+            }
         }
 
         return $this->render('registration/register.html.twig', [
