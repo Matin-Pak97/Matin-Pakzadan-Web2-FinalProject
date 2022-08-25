@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <label for="ratePlan">RatePlan: </label>
+    <div>
+        <select id="ratePlan" name="rate-plan">
+            {% for ratePlan in property.ratePlans %}
+                <option value="{{ ratePlan.id }}" {% if ratePlan.isDefault %}selected{% endif %}>{{ ratePlan.__toString() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

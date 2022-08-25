@@ -65,6 +65,11 @@ class Property implements TimeLoggerInterface, UserLoggerInterface
         $this->ratePlans = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->getName() . '(' . $this->getMarketName() . ')';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

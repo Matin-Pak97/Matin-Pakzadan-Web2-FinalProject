@@ -27,7 +27,7 @@ class Booking implements TimeLoggerInterface, UserLoggerInterface
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Property $propery = null;
+    private ?Property $property = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -68,14 +68,14 @@ class Booking implements TimeLoggerInterface, UserLoggerInterface
         return $this;
     }
 
-    public function getPropery(): ?Property
+    public function getProperty(): ?Property
     {
-        return $this->propery;
+        return $this->property;
     }
 
-    public function setPropery(?Property $propery): self
+    public function setProperty(?Property $property): self
     {
-        $this->propery = $propery;
+        $this->property = $property;
 
         return $this;
     }

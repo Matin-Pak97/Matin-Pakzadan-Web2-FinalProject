@@ -1,0 +1,38 @@
+general:
+  entity:
+    created_at: 'تاریخ ساخت'
+    updated_at: 'تاریخ ویرایش'
+  back_to_list:
+    label: 'برگشت به لیست'
+  search: 'جستجو'
+  table:
+    action:
+      label: 'اقدامات'
+      show: 'نمایش'
+      edit: 'ویرایش'
+    no_record: 'هیچ اطلاعاتی یافت نشد'
+  actions:
+    save: 'ذخیره'
+
+login:
+  email:
+    label: نام کاربری
+  password:
+    label: رمز عبور
+  submit_button:
+    label: ورود
+
+property:
+  common:
+    entity:
+      label: 'ملک'
+      id: 'شناسه'
+      name: 'اسم'
+  index:
+    label: 'لیست ملک ها یا دارایی ها'
+  create:
+    label: 'ساختن'
+    title: 'ساختن ملک جدید'
+  edit:
+    label: 'ویرایش'
+    title: 'ویرایش ملک'

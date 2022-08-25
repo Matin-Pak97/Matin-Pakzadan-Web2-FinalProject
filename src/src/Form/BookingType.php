@@ -2,28 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\RatePlan;
+use App\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RatePlanType extends AbstractType
+class BookingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('property')
-            ->add('extraGuestPrice')
-            ->add('price')
-            ->add('isDefault')
-        ;
+            ->add('numberOfGuest')
+            ->add('bookingStartDate')
+            ->add('bookingEndDate');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => RatePlan::class,
+            'data_class' => Booking::class,
         ]);
     }
 }

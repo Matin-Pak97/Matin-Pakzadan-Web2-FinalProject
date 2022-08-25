@@ -20,6 +20,9 @@ class RatePlan implements TimeLoggerInterface, UserLoggerInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255, nullable: false)]
+    private ?string $name = null;
+
     #[ORM\Column]
     private ?int $price = null;
 
@@ -32,6 +35,11 @@ class RatePlan implements TimeLoggerInterface, UserLoggerInterface
     #[ORM\ManyToOne(inversedBy: 'ratePlans')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Property $property = null;
+
+    public function __toString(): string
+    {
+        return $this->name . ' (Price perDay: ' . $this->price . ' - Extra guest price: ' . $this->extraGuestPrice . ')';
+    }
 
     public function getId(): ?int
     {
@@ -82,6 +90,18 @@ class RatePlan implements TimeLoggerInterface, UserLoggerInterface
     public function setProperty(?Property $property): self
     {
         $this->property = $property;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

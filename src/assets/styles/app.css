@@ -1,3 +1,67 @@
 body {
-    background-color: lightgray;
+    background-color: Gray;
+}
+
+h1 {
+    color: white;
+}
+
+p {
+    color: whitesmoke;
+}
+
+a {
+    color: whitesmoke;
+}
+
+a:hover {
+    color: antiquewhite;
+}
+
+label {
+    color: white;
+}
+
+input {
+    border-radius: 4px;
+}
+
+button {
+    border-radius: 4px !important;
+    color: white !important;
+    background-color: Black !important;
+}
+
+.wrapper-container {
+    margin: 20px auto;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+
+.navbar-menu > ul{
+    margin-top: auto;
+}
+
+.navbar-menu > ul li{
+    display: inline;
+    margin-top: auto;
+    margin-left: 20px;
+}
+
+.logo-title {
+    margin-right: 15%;
+    transition: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+.logo-title:hover {
+    background: #ffaa00;
+}
+
+.navbar-menu {
+    display: inline-flex;
+    padding: 20px;
+    width: 100%;
+    background: black;
 }

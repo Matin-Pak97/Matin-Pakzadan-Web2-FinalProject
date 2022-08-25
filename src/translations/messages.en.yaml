@@ -1,0 +1,38 @@
+general:
+  entity:
+    created_at: 'Created At'
+    updated_at: 'Updated At'
+  back_to_list:
+    label: 'Back to list'
+  search: 'Search'
+  table:
+    action:
+      label: 'Actions'
+      show: 'Show'
+      edit: 'Edit'
+    no_record: 'No records found'
+  actions:
+    save: 'Save'
+
+login:
+  email:
+    label: Username
+  password:
+    label: Password
+  submit_button:
+    label: Login
+
+property:
+  common:
+    entity:
+      label: 'Property'
+      id: 'ID'
+      name: 'Name'
+  index:
+    label: 'Property Index'
+  create:
+    label: 'Create'
+    title: 'Create new Property'
+  edit:
+    label: 'Edit'
+    title: 'Edit Property'

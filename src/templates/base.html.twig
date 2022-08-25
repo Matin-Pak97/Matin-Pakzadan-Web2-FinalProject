@@ -15,7 +15,12 @@
         {% endblock %}
     </head>
     <body>
-        {{ knp_menu_render('main') }}
-        {% block body %}{% endblock %}
+        <div class="navbar-menu">
+            <h1 class="logo-title">Easy Booking</h1>
+            {{ knp_menu_render('main') }}
+        </div>
+        <div class="wrapper-container">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

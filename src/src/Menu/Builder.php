@@ -34,18 +34,29 @@ class Builder {
         /**@var User $user */
         $user = $token == null ? null : $this->tokenStorage->getToken()->getUser();
 
+        $menu->addChild('Home', ['route' => 'app_home']);
         if(!is_null($user) && in_array("ROLE_ADMIN", $user->getRoles())) {
-            $menu->addChild('Logout', ['route' => 'logout']);
-        } else if(!is_null($user) && in_array("ROLE_HOST", $user->getRoles())) {
+            $menu->addChild('Bookings', ['route' => 'app_booking_index']);
             $menu->addChild('Properties', ['route' => 'app_property_index']);
             $menu->addChild('Rate Plans', ['route' => 'app_rate_plan_index']);
             $menu->addChild('Property Types', ['route' => 'app_property_type_index']);
+            $menu->addChild('Contact Us List', ['route' => 'app_message_index']);
+            $menu->addChild('Logout', ['route' => 'logout']);
+        } else if(!is_null($user) && in_array("ROLE_HOST", $user->getRoles())) {
+            $menu->addChild('Bookings', ['route' => 'app_booking_index']);
+            $menu->addChild('Properties', ['route' => 'app_property_index']);
+            $menu->addChild('Rate Plans', ['route' => 'app_rate_plan_index']);
+            $menu->addChild('Property Types', ['route' => 'app_property_type_index']);
+            $menu->addChild('Contact Us', ['route' => 'app_message_new']);
             $menu->addChild('Logout', ['route' => 'logout']);
         } else if (!is_null($user) && in_array("ROLE_GUEST", $user->getRoles())){
+            $menu->addChild('Bookings', ['route' => 'app_booking_index']);
+            $menu->addChild('Contact Us', ['route' => 'app_message_new']);
             $menu->addChild('Logout', ['route' => 'logout']);
         } else {
             $menu->addChild('Login', ['route' => 'login']);
             $menu->addChild('Sign Up', ['route' => 'app_register']);
+            $menu->addChild('Contact Us', ['route' => 'app_message_new']);
         }
 
 //        $menu->addChild('Hotels', ['route' => 'app_hotel_index']);

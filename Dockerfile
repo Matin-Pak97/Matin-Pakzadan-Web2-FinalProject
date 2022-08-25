@@ -20,6 +20,10 @@ RUN apt-get install -y zip \
 # install mysql driver
 RUN docker-php-ext-install pdo_mysql
 
+# install int bundle
+RUN apt-get install -y libicu-dev
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
+
 # install npm
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
 RUN apt-get -y install nodejs

@@ -21,6 +21,18 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
+    /**
+     * @return Property[] Returns an array of Property objects
+     */
+    public function findAllAvailableProperty(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.ratePlans', 'rp')
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function add(Property $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

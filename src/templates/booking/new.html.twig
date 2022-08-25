@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Booking{% endblock %}
+
+{% block body %}
+    <h1>Reserve Property</h1>
+
+    {% if errors is not empty %}
+    <div>
+        <h6>{{ errors }}</h6>
+    </div>
+    {% endif %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>MarketName</th>
+            <td>{{ property.marketName }}</td>
+        </tr>
+        <tr>
+            <th>MinCapacity</th>
+            <td>{{ property.minCapacity }}</td>
+        </tr>
+        <tr>
+            <th>MaxCapacity</th>
+            <td>{{ property.maxCapacity }}</td>
+        </tr>
+        <tr>
+            <th>CheckinTime</th>
+            <td>{{ property.checkinTime ? property.checkinTime|date('H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>CheckoutTime</th>
+            <td>{{ property.checkoutTime ? property.checkoutTime|date('H:i:s') : '' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {{ include('booking/_form.html.twig') }}
+
+    <a href="{{ path('app_booking_index') }}">back to list</a>
+{% endblock %}
